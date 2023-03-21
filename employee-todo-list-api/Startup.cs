@@ -47,15 +47,17 @@ namespace employee_todo_list_api
             services.AddControllers();
 
             services.AddAutoMapper(typeof(Startup));
+            var mongoConnectionString = Configuration.GetValue<string>("DatabaseSettings:MongoConnectionString");
+
 
             services.Configure<DbSettings>(Configuration.GetSection(nameof(DbSettings)));
             services.AddSingleton<IDbSettings>(sp => sp.GetRequiredService<IOptions<DbSettings>>().Value);
             services.AddSingleton<EmployeeService>();
             services.AddSingleton<TodosService>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();
@@ -83,5 +85,6 @@ namespace employee_todo_list_api
                 endpoints.MapControllers();
             });
         }
+        
     }
 }
