@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: `${window.location.protocol}//${window.location.hostname}:${window.location.port}/api`
+  apiUrl: window['env']['apiUrl'] || `http://localhost:5000/api`
 };
 
 /*

@@ -6,7 +6,7 @@ services:
       context: ./employee-todo-list-app
       dockerfile: Dockerfile
     environment:
-      - API_URL=http://api:80
+      - BACKEND_BASE_URL=${BACKEND_BASE_URL}
     ports:
       - "80:80"
     depends_on:
